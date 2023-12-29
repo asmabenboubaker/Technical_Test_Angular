@@ -1,0 +1,52 @@
+<div class="container">
+  <h2 class="title py-4">Gestion Des Courses
+    <button class="btn btn-secondary" style="float:right" (click)="Add()">
+      <span class="pi pi-plus" aria-hidden="true"></span> Ajouter un Course
+    </button>
+  </h2>
+
+  <div class="card p-4">
+    <button type="button" (click)="exportPDF()" class="btn btn-warning">
+      <i class="fa fa-file-pdf-o" style="font-size: 16px"></i>&nbsp; PDF
+    </button>
+    <button type="button" (click)="exportExcel()" class="btn btn-warning">
+      <i class="fa fa-file-excel-o" style="font-size:16px"></i>&nbsp; Excel
+    </button>
+
+    <div class="mb-3">
+      <input
+        placeholder="Search"
+        type="text"
+        class="form-control"
+        [(ngModel)]="nom"
+      />
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Price</th>
+          <th>imgae</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let blItem of Table">
+          <td scope="row">{{ blItem.name }}</td>
+          <td>{{ blItem.price }}</td>
+         <td> <img [src]="imageUrl" (load)="loadImage(blItem.image)"></td>
+       
+          <td>
+            <img src="../../../../assets/icon/edit.svg" alt="edit" (click)="Edit(blItem.id)">
+            <img src="../../../../assets/icon/trash.svg" alt="trash" (click)="delete(blItem.idCourse)">  {{ blItem.idCourse}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="Table.length === 0" class="text-center mt-3">
+      Aucun Course trouvé.
+    </div>
+  </div>
+</div>

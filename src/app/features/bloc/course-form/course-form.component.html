@@ -1,0 +1,32 @@
+<!-- course-form.component.html -->
+<div class="container mt-4">
+  <h2 class="mb-4">Add Course</h2>
+  <form #f="ngForm"   class="form">
+    <!-- Name -->
+    <div class="mb-3">
+      <label for="name" class="form-label">Name:</label>
+      <input type="text" id="name" name="name" [(ngModel)]="course.name" class="form-control" required>
+    </div>
+
+    <!-- Price -->
+    <div class="mb-3">
+      <label for="price" class="form-label">Price:</label>
+      <input type="number" id="price" name="price" [(ngModel)]="course.price" class="form-control" required>
+    </div>
+
+    <!-- Description -->
+    <div class="mb-3">
+      <label for="description" class="form-label">Description:</label>
+      <textarea id="description" name="description" [(ngModel)]="course.description" class="form-control" rows="3" required></textarea>
+    </div>
+
+    <!-- Image -->
+    <div class="mb-3">
+      <label for="image" class="form-label">Image:</label>
+      <input type="file" id="image" name="image" (change)="onFileChange($event)" class="form-control" accept="image/*" required>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Add Course</button>
+  </form>
+</div>

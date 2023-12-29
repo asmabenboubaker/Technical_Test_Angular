@@ -1,0 +1,18 @@
+<div class="layout-sidebar" [ngClass]="{ active: active }">
+  <ul class="navigation-nav">
+    <li class="navigation-nav-item" *ngFor="let data of navData">
+      <a class="navigation-nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <i class="navigation-link-icon" [class]="data.icon"></i>
+        <a class="navigation-link-text" [routerLink]="[data.routeLink]">
+          {{ data.label }}
+        </a>
+      </a>
+    </li>
+    <li class="navigation-nav-item">
+      <a class="navigation-nav-link">
+        <i class="navigation-link-icon pi pi-sign-out"></i>
+        <span class="navigation-link-text"> Log out</span>
+      </a>
+    </li>
+  </ul>
+</div>

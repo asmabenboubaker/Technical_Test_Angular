@@ -52,7 +52,7 @@ delete(id: number) {
 }
 
 getCourseById(id: number): Observable<Course> {
-  const url = `${this.apiUrl}${id}`;
+  const url = `${this.apiUrl}get/${id}`;
   return this._http.get<Course>(url);
 }
 

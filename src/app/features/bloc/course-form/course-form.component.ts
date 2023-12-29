@@ -1,9 +1,9 @@
+import { Course } from 'src/app/models/Course';
 import { Component } from '@angular/core';
 import { CourseService } from 'src/app/services/course.service';
 import {ActivatedRoute, Router} from "@angular/router";
-import {  DynamicDialogRef} from "primeng/dynamicdialog";
+import {  DynamicDialogConfig, DynamicDialogRef} from "primeng/dynamicdialog";
 import {ConfirmationService, MessageService} from "primeng/api";
-import {Course} from "../../../models/Course";
 import {NgForm} from "@angular/forms";
 
 @Component({
@@ -16,19 +16,20 @@ export class BlocFormComponent {
   foyers: any[] = [];
   selectedFoyerId!: number;
   selectedFile!: File;
-  course: Course = {
-    idCourse: 0,
-    name: '',
-    price: 0,
-    description: '',
-    image: null
-  };
+  // course: Course = {
+  //   idCourse: 0,
+  //   name: '',
+  //   price: 0,
+  //   description: '',
+  //   image: null
+  // };
+  course: Course = new Course();
   constructor(
     private courseservice: CourseService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private readonly dialogService: DynamicDialogRef,
-    
+    private config: DynamicDialogConfig,
     public messageService: MessageService,
     private confirmationService: ConfirmationService,
   ) { }
@@ -39,7 +40,24 @@ export class BlocFormComponent {
     }
   }
    
+
+  
+  ngOnInit(): void {
+    this.id = this.config.data?.id;
+    console.log("ID onInit f lvl ::: "+ this.id);
+    if (this.id != undefined) {
+      this.courseservice.getCourseById(this.id).subscribe({
+        next: (data: any) => { this.course = data; },
+      });
+    }
+  }
+   
+  
+
   addCourse(): void {
+
+
+
     this.courseservice.addCourse(this.course)
       .subscribe(response => {
         // Handle success
@@ -49,12 +67,5 @@ export class BlocFormComponent {
         console.error('Error adding course', error);
       });
   }
-  
-  ngOnInit(): void {
-     
-
-  }
-   
-  
   
 }

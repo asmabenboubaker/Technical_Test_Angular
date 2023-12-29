@@ -44,6 +44,7 @@ export class ListBlocComponent  implements OnInit{
     )
       
   }
+  
   loadImage(imageName: string): void {
     console.log('loadImage called with:' );
     this.courseService.getImage(imageName).subscribe(
@@ -60,6 +61,8 @@ export class ListBlocComponent  implements OnInit{
       }
     );
   }
+
+
   delete(id: number): void {
     const confirmed = window.confirm('Are you sure you want to delete this course?');
     
@@ -86,11 +89,21 @@ export class ListBlocComponent  implements OnInit{
       });
   }
 
+  Edit(id:number) {
+    this.dialogService.open(BlocFormComponent, {
+      data: { id },
+      header: "Modifier les informations du Course"
+    });
+  }
+
+
   ngOnInit(): void {
     this.getList();
   }
   
  
+
+  
 
   Add(){
     this.dialogService.open(BlocFormComponent, {
@@ -98,12 +111,6 @@ export class ListBlocComponent  implements OnInit{
     })
   }
 
-  Edit(id:number) {
-    this.dialogService.open(BlocFormComponent, {
-      data: { id },
-      header: "Modifier les informations du bloc"
-    });
-  }
 
   
   exportPDF(){
@@ -134,7 +141,6 @@ export class ListBlocComponent  implements OnInit{
  
 
   }
-
 
   exportExcel(){
     this.courseService.excelExport().subscribe(data=>{

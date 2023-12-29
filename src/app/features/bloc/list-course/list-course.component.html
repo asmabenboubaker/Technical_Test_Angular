@@ -35,10 +35,12 @@
         <tr *ngFor="let blItem of Table">
           <td scope="row">{{ blItem.name }}</td>
           <td>{{ blItem.price }}</td>
-         <td> <img [src]="imageUrl" (load)="loadImage(blItem.image)"></td>
+         <td>
+           <!-- <img [src]="imageUrl" (load)="loadImage(blItem.image)"> -->
+        </td>
        
           <td>
-            <img src="../../../../assets/icon/edit.svg" alt="edit" (click)="Edit(blItem.id)">
+            <img src="../../../../assets/icon/edit.svg" alt="edit" (click)="Edit(blItem.idCourse)">
             <img src="../../../../assets/icon/trash.svg" alt="trash" (click)="delete(blItem.idCourse)">  {{ blItem.idCourse}}
           </td>
         </tr>

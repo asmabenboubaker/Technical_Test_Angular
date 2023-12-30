@@ -1,167 +1,160 @@
-body, html {
-    height: 100%;
-    margin: 0;
-    font-family:  Arial, Helvetica, sans-serif;
-}
+$color_1: black;
+$color_2: #fff;
+$color_3: #af2f64;
+$color_4: #ffffff;
+$font-family_1: Arial, Helvetica, sans-serif;
+$background-color_1: rgba(255, 255, 255, 0.7);
+$background-color_2: #af2f64;
+$background-color_3: #fab555;
+$background-color_4: #333;
+$background-color_5: #555;
+$border-color_1: #af2f64;
+$border-color_2: #fab555;
 
 /* NAV BAR  */
-.navbar-brand{
-    /* border: solid red 2px; */
-    padding: 0 !important;
-}
-.navbar-brand img {
-    /* border: solid blue 2px; */
-    margin: 0 !important;
-}
-
 /* HERO SECTION */
-
-.hero-image {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/assets/img/hero11.jpg");
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-}
-
-.hero-text {
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: black;
-    
-    padding: 3%;
-    /* translucent white background color */
-    background-color: rgba(255, 255, 255, 0.7);
-}
-
-
-.primary-btn{
-    border: none;
-    background-color: #af2f64;    
-    display: inline-block;
-    padding: 10px 25px;
-    color: #fff;
-    text-align: center;
-    cursor: pointer;
-    border-color: #af2f64;
-    outline: 0;
-    font-weight:600 !important;
-}
-.primary-btn:hover{
-    background-color: #fab555 !important;
-    border-color: #fab555 !important;
-    color: #af2f64;
-}
-
-.button-link{
-    font-weight: 300;
-    font-size: 16px;
-    letter-spacing: 1px;
-    display: inline-block;
-    padding: 8px 20px;
-    border-radius: 20px;
-    transition: .5s;
-    margin: 10px;
-    text-decoration: none
-}
-
 /* CONTENT  */
-
-.content-header{
-    margin: 2%;
+body {
+	height: 100%;
+	margin: 0;
+	font-family: $font-family_1;
 }
-
+html {
+	height: 100%;
+	margin: 0;
+	font-family: $font-family_1;
+}
+.navbar-brand {
+	padding: 0 !important;
+	img {
+		margin: 0 !important;
+	}
+}
+.hero-image {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/assets/img/hero11.jpg");
+	height: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+}
+.hero-text {
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: $color_1;
+	padding: 3%;
+	background-color: $background-color_1;
+}
+.primary-btn {
+	border: none;
+	background-color: $background-color_2;
+	display: inline-block;
+	padding: 10px 25px;
+	color: $color_2;
+	text-align: center;
+	cursor: pointer;
+	border-color: $border-color_1;
+	outline: 0;
+	font-weight: 600 !important;
+	&:hover {
+		background-color: $background-color_3 !important;
+		border-color: $border-color_2 !important;
+		color: $color_3;
+	}
+}
+.button-link {
+	font-weight: 300;
+	font-size: 16px;
+	letter-spacing: 1px;
+	display: inline-block;
+	padding: 8px 20px;
+	border-radius: 20px;
+	transition: .5s;
+	margin: 10px;
+	text-decoration: none;
+}
+.content-header {
+	margin: 2%;
+}
 .card {
-    border-radius: 0%;
-    border: none;
-    box-shadow: none;
-    padding: 0;
-    text-align: center;
-    margin: 0 !important;
+	border-radius: 0%;
+	border: none;
+	box-shadow: none;
+	padding: 0;
+	text-align: center;
+	margin: 0 !important;
 }
-.cardContainer{
-    margin-bottom: 4rem;
+.cardContainer {
+	margin-bottom: 4rem;
 }
-.container2{
-    /* padding: 2px 16px;
-    border: solid red 2px; */
-    text-align: center;
+.container2 {
+	text-align: center;
 }
 .pricing {
-    color: #af2f64;   
+	color: $color_3;
 }
-
-.course-img-card{
-    height: 230px;
-    overflow: hidden;    
+.course-img-card {
+	height: 230px;
+	overflow: hidden;
 }
-
-
-
-
-.contact-container{
-    background-color: #fab555;
-    border-radius: 70px;
-    
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 5%;
+.contact-container {
+	background-color: $background-color_3;
+	border-radius: 70px;
+	width: 70%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 5%;
 }
 .contact-form {
-    width: 50%;
-    padding: 20px;
-    /* border: solid red 2px; */
-    border-radius: 5px;
+	width: 50%;
+	padding: 20px;
+	border-radius: 5px;
+	label {
+		display: block;
+		margin-bottom: 5px;
+		font-weight: 600;
+	}
+	input {
+		width: 100%;
+		padding: 8px;
+		margin-bottom: 15px;
+		border-radius: 20px;
+		background: white;
+		opacity: 0.6;
+		border: none;
+		box-sizing: border-box;
+	}
+	textarea {
+		width: 100%;
+		padding: 8px;
+		margin-bottom: 15px;
+		border-radius: 20px;
+		background: white;
+		opacity: 0.6;
+		border: none;
+		box-sizing: border-box;
+		resize: none;
+	}
+	button {
+		width: 100%;
+		padding: 10px;
+		background-color: $background-color_4;
+		color: $color_4;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+		&:hover {
+			background-color: $background-color_5;
+		}
+	}
 }
-
-.contact-form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 600;
-}
-
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    /* border: solid red 2px; */
-    border-radius: 20px;
-    background: white;
-    opacity: 0.6;
-    border: none;
-    box-sizing: border-box;
-}
-
-.contact-form textarea {
-    resize: none;
-
-}
-
-.contact-form button {
-    width: 100%;
-    padding: 10px;
-    background-color: #333;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.contact-form button:hover {
-    background-color: #555;
-}
-
-.btn-contact{
-    background-color: #af2f64 !important;
-    width: fit-content !important;
-    /* padding left and right */
-    padding: 5px 30px !important;
+.btn-contact {
+	background-color: $background-color_2 !important;
+	width: fit-content !important;
+	padding: 5px 30px !important;
 }

@@ -73,10 +73,12 @@ export class BlocFormComponent {
     if (this.id !== undefined) {
       console.log("UPDATE COURSE f lvl ::: " + this.course);
       this.courseservice.updateCourse(this.course).subscribe((data)=>{
+          // message to be displayed after adding bloc
+      
         this.courseservice.getAllBlocs().subscribe(
             (response: any) => {
               this.courseservice.data = response.data;
-              console.log("UPDATE COURSE DONE " + response.data.getRawValue())
+              console.log("UPDATE COURSE DONE " )
             },
             (error) => {
               console.error('Error fetching data f lvl:', error);
@@ -84,6 +86,9 @@ export class BlocFormComponent {
         );
         this.dialogService.close();
         f.reset()
+        
+        //this.router.navigate(['./'], { queryParams: { refresh: Math.random() } });
+        location.reload();
       });
     }else{
        //adding bloc to the database
@@ -91,12 +96,7 @@ export class BlocFormComponent {
       this.courseservice.addCourse(this.course).subscribe((data)=>{
         console.log("COURSE DATA TO BE ADDED form comp level " + JSON.stringify(data, null, 2));
         // message to be displayed after adding bloc
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Done',
-          detail: 'Successfully Updated ',
-          life: 5000,
-        });
+     
         // auto updating the bloc list
         this.courseservice.getAllBlocs().subscribe(
             (response: any) => {
@@ -107,6 +107,8 @@ export class BlocFormComponent {
               console.error('Error fetching data f lvl:', error);
             }
         );
+        //redirect to the course list
+        location.reload();
       });
       this.dialogService.close();
       f.reset();

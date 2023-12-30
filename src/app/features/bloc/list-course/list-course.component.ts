@@ -7,7 +7,7 @@ import {BlocFormComponent} from "../course-form/course-form.component";
 import { CourseService } from 'src/app/services/course.service';
 import { ActivatedRoute } from '@angular/router';
 import { Course } from 'src/app/models/Course';
-
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-list-bloc',
   templateUrl: './list-course.component.html',
@@ -33,16 +33,36 @@ export class ListBlocComponent  implements OnInit{
     private confirmationService: ConfirmationService,
     private cdRef: ChangeDetectorRef,
     private route: ActivatedRoute,
+    private sanitizer: DomSanitizer
     // private config: DynamicDialogConfig,
   ) { }
   getList(){
     this.courseService.getAllBlocs().subscribe(
-      data=>{this.Table=data;
-      console.log(this.Table);
-     
-    }
+      (data : any)=>{
+        this.Table=data;
+        // let object = URL.createObjectURL(this.Table[0].image);
+        // this.imageUrl= this.sanitizer.bypassSecurityTrustUrl(object);
+         // Convert blob data to data URL
+         this.Table.forEach(item => {
+          this.convertBlobToDataURL(item.image).then(dataUrl => {
+            item.imageUrl = this.sanitizer.bypassSecurityTrustUrl(dataUrl);
+          });
+        });
+        console.log(this.Table);
+      }
     )
       
+  }
+
+  convertBlobToDataURL(blob: Blob): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        resolve(reader.result as string);
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
   }
   
   loadImage(imageName: string): void {

@@ -36,7 +36,8 @@
           <td scope="row">{{ blItem.name }}</td>
           <td>{{ blItem.price }}</td>
          <td>
-           <!-- <img [src]="imageUrl" (load)="loadImage(blItem.image)"> -->
+           <img [src]="blItem.image" alt="img">
+           
         </td>
        
           <td>
@@ -50,5 +51,10 @@
     <div *ngIf="Table.length === 0" class="text-center mt-3">
       Aucun Course trouvé.
     </div>
+
+    <p-confirmDialog header="Confirmation"></p-confirmDialog>
+
+    <p-toast position="bottom-center"></p-toast>
+    
   </div>
 </div>

@@ -3,7 +3,7 @@ import {Table} from "primeng/table";
 
 import {DialogService} from "primeng/dynamicdialog";
 import {ConfirmationService, MessageService} from "primeng/api";
-import {BlocFormComponent} from "../course-form/course-form.component";
+import {CourseFormComponent} from "../course-form/course-form.component";
 import { CourseService } from 'src/app/services/course.service';
 import { ActivatedRoute } from '@angular/router';
 import { Course } from 'src/app/models/Course';
@@ -11,7 +11,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 //import app navigation 
 
 @Component({
-  selector: 'app-list-bloc',
+  selector: 'app-list-course',
   templateUrl: './list-course.component.html',
   styleUrls: ['./list-course.component.scss']
 })
@@ -39,7 +39,7 @@ export class ListCourseComponent  implements OnInit{
     // private config: DynamicDialogConfig,
   ) { }
   getList(){
-    this.courseService.getAllBlocs().subscribe(
+    this.courseService.getAll().subscribe(
       (data : any)=>{
         this.Table=data;
         // let object = URL.createObjectURL(this.Table[0].image);
@@ -108,7 +108,7 @@ export class ListCourseComponent  implements OnInit{
   }
 
   Edit(id:number) {
-    this.dialogService.open(BlocFormComponent, {
+    this.dialogService.open(CourseFormComponent, {
       data: { id },
       header: "Modifier les informations du Course"
     });
@@ -124,8 +124,8 @@ export class ListCourseComponent  implements OnInit{
   
 
   Add(){
-    this.dialogService.open(BlocFormComponent, {
-      header:"Ajouter un nouveau bloc"
+    this.dialogService.open(CourseFormComponent, {
+      header:"Ajouter un nouveau cours"
     })
   }
 

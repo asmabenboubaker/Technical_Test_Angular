@@ -7,11 +7,11 @@ import {ConfirmationService, MessageService} from "primeng/api";
 import {NgForm} from "@angular/forms";
 
 @Component({
-  selector: 'app-bloc-form',
+  selector: 'app-course-form',
   templateUrl: './course-form.component.html',
   styleUrls: ['./course-form.component.scss']
 })
-export class BlocFormComponent {
+export class CourseFormComponent {
   id: number = 0;
   foyers: any[] = [];
   selectedFoyerId!: number;
@@ -74,7 +74,7 @@ export class BlocFormComponent {
       console.log("UPDATE COURSE f lvl ::: " + this.course);
       this.courseservice.updateCourse(this.course).subscribe((data)=>{
           
-        this.courseservice.getAllBlocs().subscribe(
+        this.courseservice.getAll().subscribe(
             (response: any) => {
               this.courseservice.data = response.data;
               console.log("UPDATE COURSE DONE " )
@@ -95,7 +95,7 @@ export class BlocFormComponent {
       this.courseservice.addCourse(this.course).subscribe((data)=>{
         console.log("COURSE DATA TO BE ADDED form comp level " + JSON.stringify(data, null, 2));
         
-        this.courseservice.getAllBlocs().subscribe(
+        this.courseservice.getAll().subscribe(
             (response: any) => {
               this.courseservice.data = response.data;
               console.log("ADD COURSE DONE f lvl:", JSON.stringify(this.courseservice.data, null, 2));

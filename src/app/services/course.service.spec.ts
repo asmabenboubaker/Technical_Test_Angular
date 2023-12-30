@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { CourseService } from './course.service';
 
-describe('BlocService', () => {
+describe('CourseService', () => {
   let service: CourseService;
 
   beforeEach(() => {

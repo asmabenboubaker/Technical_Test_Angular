@@ -27,6 +27,6 @@
     </div>
 
     <!-- Submit Button -->
-    <button type="submit" class="btn btn-primary">Add Course</button>
+    <input type="submit" class="btn btn-primary" [value]="course.idCourse!==undefined? 'Update' : 'Add'">
   </form>
 </div>

@@ -5,7 +5,7 @@ import { CourseRoutingModule } from './course-routing.module';
 import { ListCourseComponent } from './list-course/list-course.component';
 import {TableModule} from "primeng/table";
 import {InputTextModule} from "primeng/inputtext";
-import { BlocFormComponent } from './course-form/course-form.component';
+import { CourseFormComponent } from './course-form/course-form.component';
 import {FormsModule} from "@angular/forms";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {ToastModule} from "primeng/toast";
@@ -14,7 +14,7 @@ import {ToastModule} from "primeng/toast";
 @NgModule({
   declarations: [
     ListCourseComponent,
-    BlocFormComponent
+    CourseFormComponent
   ],
   imports: [
     CommonModule,

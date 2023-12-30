@@ -1,7 +1,7 @@
 <div class="container">
-  <h2 class="title py-4">Gestion Des Courses
+  <h2 class="title py-4">Course Management
     <button class="btn btn-secondary" style="float:right" (click)="Add()">
-      <span class="pi pi-plus" aria-hidden="true"></span> Ajouter un Course
+      <span class="pi pi-plus" aria-hidden="true"></span> Add Course
     </button>
   </h2>
 
@@ -22,7 +22,7 @@
         <tr>
           <th scope="col">Name</th>
           <th scope="col">Price</th>
-          <th>imgae</th>
+          <th>Image</th>
           <th scope="col">Actions</th>
         </tr>
       </thead>
@@ -45,7 +45,7 @@
     </table>
 
     <div *ngIf="Table.length === 0" class="text-center mt-3">
-      Aucun Course trouvé.
+      No course found.
     </div>
 
     <p-confirmDialog header="Confirmation"></p-confirmDialog>

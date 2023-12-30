@@ -33,6 +33,7 @@ export class BlocFormComponent {
     public messageService: MessageService,
     private confirmationService: ConfirmationService,
   ) { }
+  
   onFileChange(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
     if (inputElement.files && inputElement.files.length > 0) {
@@ -55,9 +56,6 @@ export class BlocFormComponent {
   
 
   addCourse(): void {
-
-
-
     this.courseservice.addCourse(this.course)
       .subscribe(response => {
         // Handle success
@@ -68,4 +66,50 @@ export class BlocFormComponent {
       });
   }
   
+
+  add(f: NgForm){
+    console.log("form value  :::: "+f.value);
+    // if the id is EXIST  then we are adding a new bloc ELSE we ADD the BLOC
+    if (this.id !== undefined) {
+      console.log("UPDATE COURSE f lvl ::: " + this.course);
+      this.courseservice.updateCourse(this.course).subscribe((data)=>{
+        this.courseservice.getAllBlocs().subscribe(
+            (response: any) => {
+              this.courseservice.data = response.data;
+              console.log("UPDATE COURSE DONE " + response.data.getRawValue())
+            },
+            (error) => {
+              console.error('Error fetching data f lvl:', error);
+            }
+        );
+        this.dialogService.close();
+        f.reset()
+      });
+    }else{
+       //adding bloc to the database
+      console.log(this.course.name)
+      this.courseservice.addCourse(this.course).subscribe((data)=>{
+        console.log("COURSE DATA TO BE ADDED form comp level " + JSON.stringify(data, null, 2));
+        // message to be displayed after adding bloc
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Done',
+          detail: 'Successfully Updated ',
+          life: 5000,
+        });
+        // auto updating the bloc list
+        this.courseservice.getAllBlocs().subscribe(
+            (response: any) => {
+              this.courseservice.data = response.data;
+              console.log("ADD COURSE DONE f lvl:", JSON.stringify(this.courseservice.data, null, 2));
+            },
+            (error) => {
+              console.error('Error fetching data f lvl:', error);
+            }
+        );
+      });
+      this.dialogService.close();
+      f.reset();
+    }
+  }
 }

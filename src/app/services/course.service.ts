@@ -58,7 +58,7 @@ getCourseById(id: number): Observable<Course> {
 
 updateCourse(course: Course): Observable<any> {
   const formData: FormData = new FormData();
-
+  formData.append('idCourse', course.idCourse.toString());
   formData.append('name', course.name);
   formData.append('price', course.price.toString());
   formData.append('description', course.description);
@@ -66,10 +66,18 @@ updateCourse(course: Course): Observable<any> {
   if (course.image) {
     formData.append('imageFile', course.image);
   }
-
-  return this._http.put(`${this.apiUrl}update/${course.idCourse}`, formData);
+  const headers = new HttpHeaders();
+  headers.append('Content-Type', 'multipart/form-data');
+  return this._http.put(`${this.apiUrl}update`, formData, {headers});
 }
 
+// updateCourse(course: Course): Observable<any> {
+//   // Assuming that `course.idCourse` is the identifier for the course
+
+//   const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+//   return this._http.put(`${this.apiUrl}update/`, course, { headers });
+// }
 
 
 

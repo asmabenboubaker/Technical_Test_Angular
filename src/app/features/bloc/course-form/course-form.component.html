@@ -1,7 +1,7 @@
 <!-- course-form.component.html -->
 <div class="container mt-4">
   <h2 class="mb-4">Add Course</h2>
-  <form #f="ngForm"   class="form">
+  <form #f="ngForm" (ngSubmit)="add(f)" class="form">
     <!-- Name -->
     <div class="mb-3">
       <label for="name" class="form-label">Name:</label>

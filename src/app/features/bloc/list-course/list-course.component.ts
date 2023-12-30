@@ -13,7 +13,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   templateUrl: './list-course.component.html',
   styleUrls: ['./list-course.component.scss']
 })
-export class ListBlocComponent  implements OnInit{
+export class ListCourseComponent  implements OnInit{
   @ViewChild('dt') table!: Table;
   nom: string = "";
   Table: any[] = [];
@@ -127,55 +127,5 @@ export class ListBlocComponent  implements OnInit{
     })
   }
 
-
-  
-  exportPDF(){
-    this.courseService.pdfExport().subscribe(data=>{
-      
-      const blob = new Blob([data], {type: 'application/pdf'});
-      if(window.navigator &&   (window.navigator as any).msSaveOrOpenBlob){
-        (window.navigator as any).msSaveOrOpenBlob(data);
-
-        return;
-      }
-      const data1 = window.URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = data1;
-      link.download = "blocs.pdf";
-      link.dispatchEvent(new MouseEvent('click', {bubbles: true, cancelable: true, view: window}));
-      setTimeout(function(){
-        window.URL.revokeObjectURL(data1);
-        link.remove();
-      }, 100);
-    
-  },
-  error => {
-    console.error('Error during PDF export:', error);
-    // Handle or log the error as needed
-  }
-    );
  
-
-  }
-
-  exportExcel(){
-    this.courseService.excelExport().subscribe(data=>{
-      const blob = new Blob([data], {type: 'application/pdf'});
-      if(window.navigator &&   (window.navigator as any).msSaveOrOpenBlob){
-        (window.navigator as any).msSaveOrOpenBlob(data);
-
-        return;
-      }
-      const data1 = window.URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = data1;
-      link.download = "etudiant.xlsx";
-      link.dispatchEvent(new MouseEvent('click', {bubbles: true, cancelable: true, view: window}));
-      setTimeout(function(){
-        window.URL.revokeObjectURL(data1);
-        link.remove();
-      }, 100);
-    });
-
-  }
 }

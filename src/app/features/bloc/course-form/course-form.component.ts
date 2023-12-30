@@ -55,26 +55,25 @@ export class BlocFormComponent {
    
   
 
-  addCourse(): void {
-    this.courseservice.addCourse(this.course)
-      .subscribe(response => {
-        // Handle success
-        console.log('Course added successfully', response);
-      }, error => {
-        // Handle error
-        console.error('Error adding course', error);
-      });
-  }
+  // addCourse(): void {
+  //   this.courseservice.addCourse(this.course)
+  //     .subscribe(response => {
+    
+  //       console.log('Course added successfully', response);
+  //     }, error => {
+         
+  //       console.error('Error adding course', error);
+  //     });
+  // }
   
 
   add(f: NgForm){
     console.log("form value  :::: "+f.value);
-    // if the id is EXIST  then we are adding a new bloc ELSE we ADD the BLOC
+   
     if (this.id !== undefined) {
       console.log("UPDATE COURSE f lvl ::: " + this.course);
       this.courseservice.updateCourse(this.course).subscribe((data)=>{
-          // message to be displayed after adding bloc
-      
+          
         this.courseservice.getAllBlocs().subscribe(
             (response: any) => {
               this.courseservice.data = response.data;
@@ -87,17 +86,15 @@ export class BlocFormComponent {
         this.dialogService.close();
         f.reset()
         
-        //this.router.navigate(['./'], { queryParams: { refresh: Math.random() } });
+        
         location.reload();
       });
     }else{
-       //adding bloc to the database
+      
       console.log(this.course.name)
       this.courseservice.addCourse(this.course).subscribe((data)=>{
         console.log("COURSE DATA TO BE ADDED form comp level " + JSON.stringify(data, null, 2));
-        // message to be displayed after adding bloc
-     
-        // auto updating the bloc list
+        
         this.courseservice.getAllBlocs().subscribe(
             (response: any) => {
               this.courseservice.data = response.data;
@@ -107,7 +104,7 @@ export class BlocFormComponent {
               console.error('Error fetching data f lvl:', error);
             }
         );
-        //redirect to the course list
+       
         location.reload();
       });
       this.dialogService.close();

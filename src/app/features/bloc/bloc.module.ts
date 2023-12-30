@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { BlocRoutingModule } from './bloc-routing.module';
-import { ListBlocComponent } from './list-course/list-course.component';
+import { ListCourseComponent } from './list-course/list-course.component';
 import {TableModule} from "primeng/table";
 import {InputTextModule} from "primeng/inputtext";
 import { BlocFormComponent } from './course-form/course-form.component';
@@ -13,7 +13,7 @@ import {ToastModule} from "primeng/toast";
 
 @NgModule({
   declarations: [
-    ListBlocComponent,
+    ListCourseComponent,
     BlocFormComponent
   ],
   imports: [

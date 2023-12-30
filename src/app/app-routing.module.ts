@@ -7,22 +7,26 @@ import { RoutePaths } from './models/routepaths';
 
 
 const routes: Routes = [
- 
-  
 
-  
-  {
-  
+  {  
     path: `${RoutePaths.GESTION}`,
     component: LayoutComponent,
-    children: [
-     
-      
+    children: [ 
       {
         path: `${RoutePaths.DASHBOARD}`,
-        loadChildren: () => import('./features/bloc/bloc.module').then((m) => m.BlocModule),
-      },
-      
+        loadChildren: () => import('./features/course/course.module').then((m) => m.CourseModule),
+      }, 
+    ]
+  }, 
+  
+  {  
+    path: `${RoutePaths.FRONT}`,
+    component: LayoutComponent,
+    children: [ 
+      {
+        path: `${RoutePaths.HOME}`,
+        loadChildren: () => import('./features/front/front.module').then((m) => m.FrontModule),
+      }, 
     ]
   }
 ];

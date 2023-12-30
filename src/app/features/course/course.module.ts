@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { BlocRoutingModule } from './bloc-routing.module';
+import { CourseRoutingModule } from './course-routing.module';
 import { ListCourseComponent } from './list-course/list-course.component';
 import {TableModule} from "primeng/table";
 import {InputTextModule} from "primeng/inputtext";
@@ -18,7 +18,7 @@ import {ToastModule} from "primeng/toast";
   ],
   imports: [
     CommonModule,
-    BlocRoutingModule,
+    CourseRoutingModule,
     TableModule,
     InputTextModule,
     FormsModule,
@@ -27,4 +27,4 @@ import {ToastModule} from "primeng/toast";
     // DynamicDialogModule
   ]
 })
-export class BlocModule { }
+export class CourseModule { }

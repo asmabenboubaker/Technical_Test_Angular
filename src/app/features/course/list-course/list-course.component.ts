@@ -8,6 +8,8 @@ import { CourseService } from 'src/app/services/course.service';
 import { ActivatedRoute } from '@angular/router';
 import { Course } from 'src/app/models/Course';
 import { DomSanitizer } from '@angular/platform-browser';
+//import app navigation 
+
 @Component({
   selector: 'app-list-bloc',
   templateUrl: './list-course.component.html',

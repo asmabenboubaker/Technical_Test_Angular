@@ -43,11 +43,7 @@ export class ListBlocComponent  implements OnInit{
         // let object = URL.createObjectURL(this.Table[0].image);
         // this.imageUrl= this.sanitizer.bypassSecurityTrustUrl(object);
          // Convert blob data to data URL
-         this.Table.forEach(item => {
-          this.convertBlobToDataURL(item.image).then(dataUrl => {
-            item.imageUrl = this.sanitizer.bypassSecurityTrustUrl(dataUrl);
-          });
-        });
+         
         console.log(this.Table);
       }
     )
